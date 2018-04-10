@@ -451,7 +451,7 @@ void TrajBuilder::build_braking_traj(geometry_msgs::PoseStamped start_pose,
     	}
 
     }
-    else if (isMovingForward){
+    if (isMovingForward){
     	double my_t_ramp = currentState.twist.twist.linear.x / accel_max_;
 
     	for (int i = 0 ; i < ceil(my_t_ramp / dt_) ; i++){
@@ -465,9 +465,6 @@ void TrajBuilder::build_braking_traj(geometry_msgs::PoseStamped start_pose,
     	}
 
     	
-    }
-    else{ //moving forward and spinning
-    	// TODO
     }
 
     my_des_state.twist.twist = halt_twist_;
